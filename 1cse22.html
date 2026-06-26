@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTU Learners | Study Resources</title>
+    <meta name="description" content="VTU Learners provides well-organized minimalist study materials, notes, lab codes, and question banks for CSE, ISE, AIML, and DS VTU students.">
+    <meta name="keywords" content="VTU, Learners, Notes, Lab Codes, CSE, ISE, AIML, DS, Study Materials, Previous Year Papers">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS variables for light/dark themes */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --primary: #000000;
+            --primary-hover: #333333;
+            --icon-bg: rgba(0, 0, 0, 0.05);
+            --quote-bg: rgba(0, 0, 0, 0.05);
+            --shadow-primary: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --nav-bg: rgba(0, 0, 0, 0.95);
+            --card-bg: #111111;
+            --border-color: #333333;
+            --primary: #ffffff;
+            --primary-hover: #dddddd;
+            --icon-bg: rgba(255, 255, 255, 0.1);
+            --quote-bg: rgba(255, 255, 255, 0.1);
+            --shadow-primary: 0 4px 12px rgba(255, 255, 255, 0.2);
+            --shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            min-width: 180px;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: flex;
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 400;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(156, 163, 175, 0.1);
+            color: var(--primary);
+        }
+
+        /* Header Actions (Theme Toggle & Mobile Menu) */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #theme-toggle:hover {
+            background: rgba(156, 163, 175, 0.2);
+            color: var(--primary);
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 160px 20px 80px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .card-btn {
+            background: var(--primary);
+            color: var(--bg-color);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-btn:hover {
+            background: var(--primary-hover);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+
+        /* DEPARTMENTS */
+        .dept-section {
+            margin-bottom: 80px;
+        }
+
+        .dept-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        
+        .dept-title i {
+            color: var(--primary);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1), 0 8px 8px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: var(--icon-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+            transition: var(--transition);
+        }
+
+        .card:hover .icon-wrapper {
+            background: var(--primary);
+            color: var(--bg-color);
+            border-radius: 50%;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            opacity: 0.7;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .card .card-btn {
+            margin-top: auto;
+            width: 100%;
+            padding: 10px;
+            font-size: 0.95rem;
+            justify-content: center;
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        /* Removed card:hover .card-btn so buttons only highlight on direct hover */
+
+        /* ABOUT */
+        .about-content {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .about-content i.fa-quote-left {
+            font-size: 3rem;
+            color: var(--quote-bg);
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--card-bg);
+            padding: 60px 20px 20px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+            color: var(--text-color);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .footer-col p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            opacity: 0.8;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary);
+            opacity: 1;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--icon-bg);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            color: var(--bg-color);
+            transform: translateY(-3px);
+        }
+
+        .bottom-footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* PAGE UP BUTTON */
+        #page-up {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--bg-color);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        #page-up.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #page-up:hover {
+            background: var(--primary-hover);
+            transform: translateY(-5px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            nav {
+                position: absolute;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--card-bg);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 50px;
+                gap: 20px;
+                transition: var(--transition);
+                border-top: 1px solid var(--border-color);
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+                display: none;
+                background: transparent;
+                text-align: center;
+                min-width: 100%;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: flex;
+            }
+
+            .hero {
+                min-height: 60vh;
+                padding-top: 120px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                VTU Learners
+            </a>
+            
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li class="dropdown" id="dropdown-menu">
+                        <a href="javascript:void(0)">Study Material <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#cse">Computer Science (CSE)</a>
+                            <a href="#ise">Information Science (ISE)</a>
+                            <a href="#aiml">AI & ML (AIML)</a>
+                            <a href="#ds">Data Science (DS)</a>
+                        </div>
+                    </li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT: CSE 2022 -->
+    <style>
+        .grid-2x4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        @media (max-width: 992px) {
+            .grid-2x4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .grid-2x4 {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            margin-top: auto;
+        }
+        .card-buttons .card-btn {
+            width: 100%;
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            justify-content: center;
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            box-shadow: none;
+        }
+        .card-buttons .card-btn:hover,
+        .card-buttons .card-btn:active {
+            background: var(--primary);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+    </style>
+
+    <section id="cse-2022" style="padding-top: 150px; min-height: 70vh;">
+        <div class="section-title">
+            <h2>1ST SEM CSE 2022</h2>
+            <p>Comprehensive Study Materials for 1st Semester Computer Science & Engineering</p>
+        </div>
+
+        <div class="dept-section">
+            <div class="grid-2x4">
+                <!-- Subject 1 -->
+                <div class="card">
+                    <div class="icon-wrapper"><i class="fas fa-calculator"></i></div>
+                    <h3>Calculus & Linear Algebra</h3>
+                    <p>BMATS101</p>
+                    <div class="card-buttons">
+                        <a href="syllabus.pdf" target="_blank" class="card-btn">Syllabus <i class="fas fa-file-pdf"></i></a>
+                        <a href="notes.pdf" target="_blank" class="card-btn">Notes <i class="fas fa-file-pdf"></i></a>
+                        <a href="qb.pdf" target="_blank" class="card-btn">Question Bank & Imp Qs <i class="fas fa-file-pdf"></i></a>
+                        <a href="solutions.pdf" target="_blank" class="card-btn">Solutions <i class="fas fa-file-pdf"></i></a>
+                        <a href="revision.pdf" target="_blank" class="card-btn">Quick Revision Notes <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                <!-- Subject 2 -->
+                <div class="card">
+                    <div class="icon-wrapper"><i class="fas fa-atom"></i></div>
+                    <h3>Engineering Physics</h3>
+                    <p>BPHYS102</p>
+                    <div class="card-buttons">
+                        <a href="syllabus.pdf" target="_blank" class="card-btn">Syllabus <i class="fas fa-file-pdf"></i></a>
+                        <a href="notes.pdf" target="_blank" class="card-btn">Notes <i class="fas fa-file-pdf"></i></a>
+                        <a href="qb.pdf" target="_blank" class="card-btn">Question Bank & Imp Qs <i class="fas fa-file-pdf"></i></a>
+                        <a href="solutions.pdf" target="_blank" class="card-btn">Solutions <i class="fas fa-file-pdf"></i></a>
+                        <a href="revision.pdf" target="_blank" class="card-btn">Quick Revision Notes <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                <!-- Subject 3 -->
+                <div class="card">
+                    <div class="icon-wrapper"><i class="fas fa-laptop-code"></i></div>
+                    <h3>C Programming</h3>
+                    <p>BPOPS103</p>
+                    <div class="card-buttons">
+                        <a href="syllabus.pdf" target="_blank" class="card-btn">Syllabus <i class="fas fa-file-pdf"></i></a>
+                        <a href="notes.pdf" target="_blank" class="card-btn">Notes <i class="fas fa-file-pdf"></i></a>
+                        <a href="qb.pdf" target="_blank" class="card-btn">Question Bank & Imp Qs <i class="fas fa-file-pdf"></i></a>
+                        <a href="solutions.pdf" target="_blank" class="card-btn">Solutions <i class="fas fa-file-pdf"></i></a>
+                        <a href="revision.pdf" target="_blank" class="card-btn">Quick Revision Notes <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                <!-- Subject 4 -->
+                <div class="card">
+                    <div class="icon-wrapper"><i class="fas fa-building"></i></div>
+                    <h3>Civil Eng & Mechanics</h3>
+                    <p>BESC104B</p>
+                    <div class="card-buttons">
+                        <a href="syllabus.pdf" target="_blank" class="card-btn">Syllabus <i class="fas fa-file-pdf"></i></a>
+                        <a href="notes.pdf" target="_blank" class="card-btn">Notes <i class="fas fa-file-pdf"></i></a>
+                        <a href="qb.pdf" target="_blank" class="card-btn">Question Bank & Imp Qs <i class="fas fa-file-pdf"></i></a>
+                        <a href="solutions.pdf" target="_blank" class="card-btn">Solutions <i class="fas fa-file-pdf"></i></a>
+                        <a href="revision.pdf" target="_blank" class="card-btn">Quick Revision Notes <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                <!-- Subject 5 -->
+                <div class="card">
+                    <div class="icon-wrapper"><i class="fab fa-python"></i></div>
+                    <h3>Python for CSE</h3>
+                    <p>BETCK105D</p>
+                    <div class="card-buttons">
+                        <a href="syllabus.pdf" target="_blank" class="card-btn">Syllabus <i class="fas fa-file-pdf"></i></a>
+                        <a href="notes.pdf" target="_blank" class="card-btn">Notes <i class="fas fa-file-pdf"></i></a>
+                        <a href="qb.pdf" target="_blank" class="card-btn">Question Bank & Imp Qs <i class="fas fa-file-pdf"></i></a>
+                        <a href="solutions.pdf" target="_blank" class="card-btn">Solutions <i class="fas fa-file-pdf"></i></a>
+                        <a href="revision.pdf" target="_blank" class="card-btn">Quick Revision Notes <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                <!-- Subject 6 -->
+                <div class="card">
+                    <div class="icon-wrapper"><i class="fas fa-flask"></i></div>
+                    <h3>Physics Lab</h3>
+                    <p>BPLCK106</p>
+                    <div class="card-buttons">
+                        <a href="syllabus.pdf" target="_blank" class="card-btn">Syllabus <i class="fas fa-file-pdf"></i></a>
+                        <a href="notes.pdf" target="_blank" class="card-btn">Notes <i class="fas fa-file-pdf"></i></a>
+                        <a href="qb.pdf" target="_blank" class="card-btn">Question Bank & Imp Qs <i class="fas fa-file-pdf"></i></a>
+                        <a href="solutions.pdf" target="_blank" class="card-btn">Solutions <i class="fas fa-file-pdf"></i></a>
+                        <a href="revision.pdf" target="_blank" class="card-btn">Quick Revision Notes <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                <!-- Subject 7 -->
+                <div class="card">
+                    <div class="icon-wrapper"><i class="fas fa-language"></i></div>
+                    <h3>Balake Kannada</h3>
+                    <p>BKBKK107</p>
+                    <div class="card-buttons">
+                        <a href="syllabus.pdf" target="_blank" class="card-btn">Syllabus <i class="fas fa-file-pdf"></i></a>
+                        <a href="notes.pdf" target="_blank" class="card-btn">Notes <i class="fas fa-file-pdf"></i></a>
+                        <a href="qb.pdf" target="_blank" class="card-btn">Question Bank & Imp Qs <i class="fas fa-file-pdf"></i></a>
+                        <a href="solutions.pdf" target="_blank" class="card-btn">Solutions <i class="fas fa-file-pdf"></i></a>
+                        <a href="revision.pdf" target="_blank" class="card-btn">Quick Revision Notes <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                <!-- Subject 8 -->
+                <div class="card">
+                    <div class="icon-wrapper"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Innovation & Design Thinking</h3>
+                    <p>BIDTK158</p>
+                    <div class="card-buttons">
+                        <a href="syllabus.pdf" target="_blank" class="card-btn">Syllabus <i class="fas fa-file-pdf"></i></a>
+                        <a href="notes.pdf" target="_blank" class="card-btn">Notes <i class="fas fa-file-pdf"></i></a>
+                        <a href="qb.pdf" target="_blank" class="card-btn">Question Bank & Imp Qs <i class="fas fa-file-pdf"></i></a>
+                        <a href="solutions.pdf" target="_blank" class="card-btn">Solutions <i class="fas fa-file-pdf"></i></a>
+                        <a href="revision.pdf" target="_blank" class="card-btn">Quick Revision Notes <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                <!-- Subject 9 -->
+                <div class="card">
+                    <div class="icon-wrapper"><i class="fas fa-heartbeat"></i></div>
+                    <h3>Fitness for Health</h3>
+                    <p>BFHK158</p>
+                    <div class="card-buttons">
+                        <a href="syllabus.pdf" target="_blank" class="card-btn">Syllabus <i class="fas fa-file-pdf"></i></a>
+                        <a href="notes.pdf" target="_blank" class="card-btn">Notes <i class="fas fa-file-pdf"></i></a>
+                        <a href="qb.pdf" target="_blank" class="card-btn">Question Bank & Imp Qs <i class="fas fa-file-pdf"></i></a>
+                        <a href="solutions.pdf" target="_blank" class="card-btn">Solutions <i class="fas fa-file-pdf"></i></a>
+                        <a href="revision.pdf" target="_blank" class="card-btn">Quick Revision Notes <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About VTU Learners</h2>
+            <p>Our mission is to simplify education</p>
+        </div>
+        <div class="about-content">
+            <i class="fas fa-quote-left"></i>
+            <p style="font-size: 1.2rem; margin-bottom: 20px; font-weight: 400; line-height: 1.8;">
+                VTU Learners is an educational platform designed with a minimalistic approach to help VTU students access top-tier study materials without the noise and clutter.
+            </p>
+            <p style="opacity: 0.8; line-height: 1.8;">
+                From comprehensive notes to functional lab programs and previous year question banks, we aim to support students throughout their academic journey. Experience clean, distraction-free, and highly organized learning to achieve better results.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+            <p>We'd love to hear from you</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-item">
+                <i class="fas fa-envelope-open-text"></i>
+                <h3>Email</h3>
+                <p>support@vtulearners.com</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <h3>Phone</h3>
+                <p>+91 XXXXX XXXXX</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>Karnataka, India</p>
+            </div>
+        </div>
+
+        <div class="social-links">
+            
+            <a href="https://www.instagram.com/vtu.learners/" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@vtulearners96" title="YouTube"><i class="fab fa-youtube"></i></a>
+            
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>VTU Learners</h3>
+                <p>Helping VTU students learn smarter with quality educational resources.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#materials">Study Materials</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Notes</a></li>
+                    <li><a href="#">Lab Codes</a></li>
+                    <li><a href="#">Quick Notes</a></li>
+                    <li><a href="#">Question Banks</a></li>
+                    <li><a href="#">Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="footer-social">
+                    
+                    <a href="https://www.instagram.com/vtu.learners/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@vtulearners96"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            &copy; 2026 VTU Learners. All Rights Reserved.<br>
+            Designed with ❤️ for VTU Students.
+        </div>
+    </footer>
+
+    <!-- PAGE UP BUTTON -->
+    <button id="page-up" title="Go to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- SCRIPTS -->
+    <script>
+        // --- Dark Mode Toggle ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+
+        // Check local storage for existing theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.body.hasAttribute('data-theme')) {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+
+        // Dropdown toggle on mobile
+        dropdownMenu.addEventListener('click', (e) => {
+            if(window.innerWidth <= 768) {
+                dropdownMenu.classList.toggle('active');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // If the link is the dropdown trigger, don't close the menu
+                if(link.parentElement.classList.contains('dropdown') && link.getAttribute('href') === 'javascript:void(0)') {
+                    return;
+                }
+                
+                if(window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
+            });
+        });
+
+        // --- Page Up Button ---
+        const pageUpBtn = document.getElementById('page-up');
+
+        window.addEventListener('scroll', () => {
+            // Show button after scrolling down 300px
+            if (window.scrollY > 300) {
+                pageUpBtn.classList.add('show');
+            } else {
+                pageUpBtn.classList.remove('show');
+            }
+        });
+
+        pageUpBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

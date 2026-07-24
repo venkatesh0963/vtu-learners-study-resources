@@ -1,4 +1,4 @@
-# VTU Learners. 🎓
+# VTU Learners 🎓
 
 A minimalist, high-performance study resource platform tailored for Visvesvaraya Technological University (VTU) engineering students. The platform provides a clean, distraction-free environment to access syllabus copies, notes, lab codes, question banks, and quick revision notes.
 

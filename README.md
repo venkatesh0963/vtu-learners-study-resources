@@ -40,4 +40,4 @@ Since this project is built entirely with core client-side web technologies, no 
 
 - Integrate actual PDF linking for Syllabus, Notes, Question Banks, and Solutions.
 - Expand branch support to include Information Science (ISE), Artificial Intelligence & Machine Learning (AIML), and Data Science (DS).
-- Add a global search feature to instantly look up subject codes and topics.
+- Add a global search feature to instantly look up subject codes and topics..

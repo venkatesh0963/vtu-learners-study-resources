@@ -2,7 +2,7 @@
 
 A minimalist, high-performance study resource platform tailored for Visvesvaraya Technological University (VTU) engineering students. The platform provides a clean, distraction-free environment to access syllabus copies, notes, lab codes, question banks, and quick revision notes.
 
-## ✨ Features
+## ✨ Features.
 
 - **Minimalist UI/UX:** Clean design built with vanilla CSS, focusing on readability and accessibility without relying on heavy frameworks.
 - **Dark/Light Mode:** Seamless theme toggling to reduce eye strain during late-night study sessions. The preference is automatically saved in `localStorage`.
